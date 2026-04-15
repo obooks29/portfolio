@@ -77,7 +77,7 @@ const PROJECTS = [
   },
 ]
 
-const API_URL = 'YOUR_API_GATEWAY_URL/contact'
+const API_URL = 'https://wfpo6fiwy1.execute-api.us-east-1.amazonaws.com/contact'
 
 function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
