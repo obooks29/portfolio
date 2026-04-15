@@ -161,7 +161,7 @@ export default function App() {
           <div className="about-text">
             <p>
               I'm a <strong>Cloud and DevOps Engineer</strong> who started out in UI/UX design.
-              My design background isn't a detour — it's one of my biggest advantages as an engineer.
+              My design background isn't a detour, it's one of my biggest advantages as an engineer.
               It means I understand how systems are built from the infrastructure up, and how they're
               actually experienced from the interface down.
             </p>
@@ -171,7 +171,7 @@ export default function App() {
               I bring a unique focus on clarity and developer experience to every project.
             </p>
             <p>
-              I'm not just interested in making sure a system works — I'm interested in making sure
+              I'm not just interested in making sure a system works. I'm interested in making sure
               it's <strong>secure, scalable, and easy for other humans to use</strong>.
             </p>
             <div className="badge">
@@ -199,7 +199,7 @@ export default function App() {
         <div className="arch-callout">
           <p className="section-label" style={{marginBottom: '0.5rem'}}>System Architecture &amp; Design Decisions</p>
           <p className="arch-intro">
-            Cloud engineers don't just build - they choose <em>why</em> one approach beats another.
+            Cloud engineers don't just build, they choose <em>why</em> one approach beats another.
             Below is the architecture behind this portfolio site, and the reasoning that drove each decision.
             This is the kind of thinking I bring to every project.
           </p>
@@ -231,7 +231,7 @@ export default function App() {
           <div className="arch-decisions">
             <div className="arch-decision">
               <span className="arch-decision-label">Why S3 over a web server?</span>
-              <span className="arch-decision-val">S3 is serverless - no server to patch, reboot, or pay for when idle. Hosting cost drops from ~$20/mo (EC2) to ~$0.50/mo.</span>
+              <span className="arch-decision-val">S3 is serverless, no server to patch, reboot, or pay for when idle. Hosting cost drops from ~$20/mo (EC2) to ~$0.50/mo.</span>
             </div>
             <div className="arch-decision">
               <span className="arch-decision-label">Why CloudFront?</span>
@@ -239,7 +239,7 @@ export default function App() {
             </div>
             <div className="arch-decision">
               <span className="arch-decision-label">Why Origin Access Control?</span>
-              <span className="arch-decision-val">OAC means the S3 bucket is completely private — only CloudFront can read it. Even if someone finds the bucket URL, they get Access Denied.</span>
+              <span className="arch-decision-val">OAC means the S3 bucket is completely private, only CloudFront can read it. Even if someone finds the bucket URL, they get Access Denied.</span>
             </div>
           </div>
         </div>
