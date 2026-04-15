@@ -77,6 +77,65 @@ const PROJECTS = [
   },
 ]
 
+const API_URL = 'YOUR_API_GATEWAY_URL/contact'
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      if (res.ok) {
+        setStatus('success')
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <p className="form-label">Or send a message directly</p>
+      <input
+        type="text"
+        placeholder="Your name"
+        value={form.name}
+        onChange={e => setForm({...form, name: e.target.value})}
+        required
+      />
+      <input
+        type="email"
+        placeholder="Your email"
+        value={form.email}
+        onChange={e => setForm({...form, email: e.target.value})}
+        required
+      />
+      <textarea
+        placeholder="Your message"
+        rows={4}
+        value={form.message}
+        onChange={e => setForm({...form, message: e.target.value})}
+        required
+      />
+      <button type="submit" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending...' : 'Send Message →'}
+      </button>
+      {status === 'success' && <p className="form-success">Message sent! I'll be in touch soon.</p>}
+      {status === 'error'   && <p className="form-error">Something went wrong. Please email me directly.</p>}
+    </form>
+  )
+}
+
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -316,19 +375,22 @@ export default function App() {
         <p className="section-label">Let's connect</p>
         <div className="contact-grid">
           <h2 className="contact-big">LET'S<br/>WORK<br/><span>TOGETHER</span></h2>
-          <div className="contact-links">
-            <a href="mailto:bukolayodelejmoh@gmail.com" className="clink">
-              <span className="clink-type">Email</span>
-              <span className="clink-val">bukolayodelejmoh@gmail.com</span>
-            </a>
-            <a href="https://github.com/obooks29" target="_blank" rel="noreferrer" className="clink">
-              <span className="clink-type">GitHub</span>
-              <span className="clink-val">github.com/obooks29</span>
-            </a>
-            <a href="https://linkedin.com/in/bukolayodelejmoh" target="_blank" rel="noreferrer" className="clink">
-              <span className="clink-type">LinkedIn</span>
-              <span className="clink-val">linkedin.com/in/bukolayodelejmoh</span>
-            </a>
+          <div className="contact-right">
+            <div className="contact-links">
+              <a href="mailto:bukolaayodelejimoh@gmail.com" className="clink">
+                <span className="clink-type">Email</span>
+                <span className="clink-val">bukolaayodelejimoh@gmail.com</span>
+              </a>
+              <a href="https://github.com/obooks29" target="_blank" rel="noreferrer" className="clink">
+                <span className="clink-type">GitHub</span>
+                <span className="clink-val">github.com/obooks29</span>
+              </a>
+              <a href="https://linkedin.com/in/bukolayodelejmoh" target="_blank" rel="noreferrer" className="clink">
+                <span className="clink-type">LinkedIn</span>
+                <span className="clink-val">linkedin.com/in/bukolayodelejmoh</span>
+              </a>
+            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
