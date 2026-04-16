@@ -46,7 +46,7 @@ const PROJECTS = [
   {
     num: '03',
     title: 'Infrastructure as Code',
-    desc: 'Entire AWS stack reproduced in Terraform. S3 remote state with DynamoDB locking. One command provisions or destroys all resources — no console clicking required.',
+    desc: 'Entire AWS stack reproduced in Terraform. S3 remote state with DynamoDB locking. One command provisions or destroys all resources, no console clicking required.',
     outcome: 'Full stack in < 3 min · Peer-reviewable infra · Reproducible',
     tags: ['Terraform', 'AWS S3 Backend', 'IaC', 'DynamoDB'],
     github: '#',
@@ -62,7 +62,7 @@ const PROJECTS = [
   {
     num: '05',
     title: 'Containerised ECS Deploy',
-    desc: 'Multi-stage Docker build reduces image from 1.2GB → 45MB. Pushed to ECR, deployed on Fargate — no EC2 instances to manage. ALB distributes traffic across 2 tasks.',
+    desc: 'Multi-stage Docker build reduces image from 1.2GB → 45MB. Pushed to ECR, deployed on Fargate, no EC2 instances to manage. ALB distributes traffic across 2 tasks.',
     outcome: '45MB image · 2-task HA · 0 EC2 instances managed',
     tags: ['Docker', 'AWS ECR', 'AWS ECS Fargate', 'ALB'],
     github: '#',
@@ -76,65 +76,6 @@ const PROJECTS = [
     github: '#',
   },
 ]
-
-const API_URL = 'https://wfpo6fiwy1.execute-api.us-east-1.amazonaws.com/contact'
-
-function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState('idle') // idle | sending | success | error
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setStatus('sending')
-    try {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form)
-      })
-      if (res.ok) {
-        setStatus('success')
-        setForm({ name: '', email: '', message: '' })
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
-  }
-
-  return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <p className="form-label">Or send a message directly</p>
-      <input
-        type="text"
-        placeholder="Your name"
-        value={form.name}
-        onChange={e => setForm({...form, name: e.target.value})}
-        required
-      />
-      <input
-        type="email"
-        placeholder="Your email"
-        value={form.email}
-        onChange={e => setForm({...form, email: e.target.value})}
-        required
-      />
-      <textarea
-        placeholder="Your message"
-        rows={4}
-        value={form.message}
-        onChange={e => setForm({...form, message: e.target.value})}
-        required
-      />
-      <button type="submit" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Sending...' : 'Send Message →'}
-      </button>
-      {status === 'success' && <p className="form-success">Message sent! I'll be in touch soon.</p>}
-      {status === 'error'   && <p className="form-error">Something went wrong. Please email me directly.</p>}
-    </form>
-  )
-}
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -165,8 +106,9 @@ export default function App() {
         <ul className="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#projects">Work</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="/cv.pdf" target="_blank" rel="noreferrer" style={{color:'var(--orange)',opacity:1}}>CV ↓</a></li>
         </ul>
         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
           <span className="bar" /><span className="bar" /><span className="bar" />
@@ -188,7 +130,7 @@ export default function App() {
         <div className="hero-content">
           <div className="status-strip">
             <span className="status-dot-anim" />
-            AWS Cloud Practitioner (CLF-C02) - In Progress · Target: June 2026
+            AWS Cloud Practitioner (CLF-C02): In Progress · Target: June 2026
           </div>
           <p className="hero-eyebrow">Cloud &amp; DevOps Engineer · UI/UX Background</p>
           <h1 className="hero-name">
@@ -196,13 +138,12 @@ export default function App() {
             <span className="accent">JIMOH</span>
           </h1>
           <p className="hero-tagline">
-            Cloud & DevOps Engineer building resilient systems and designing experiences that matter. 
-            I focus on making infrastructure secure, scalable, and easy for humans to use.
+            I architect secure, automated AWS infrastructure, and bring a designer's eye to every system I build.
+            Specialising in scalable cloud deployments, CI/CD pipelines, and Infrastructure as Code.
           </p>
           <div className="hero-cta-row">
-            <a href="#projects" className="btn-primary">View Projects</a>
+            <a href="#contact" className="btn-primary">Get in Touch →</a>
             <a href="/cv.pdf" className="btn-secondary" target="_blank" rel="noreferrer">Download CV ↓</a>
-            <a href="#contact" className="btn-ghost">Get in touch →</a>
           </div>
         </div>
         <div className="scroll-hint" aria-hidden="true">
@@ -230,17 +171,17 @@ export default function App() {
               I bring a unique focus on clarity and developer experience to every project.
             </p>
             <p>
-              I'm not just interested in making sure a system works. I'm interested in making sure
+              I'm not just interested in making sure a system works, I'm interested in making sure
               it's <strong>secure, scalable, and easy for other humans to use</strong>.
             </p>
             <div className="badge">
               <span className="dot" />
-              Open to Cloud / DevOps · Junior-Mid level roles
+              Open to Cloud / DevOps · Junior–Mid level roles
             </div>
           </div>
           <div className="stats">
             <div className="stat">
-              <div className="stat-num">3+</div>
+              <div className="stat-num">4+</div>
               <div className="stat-label">Years in UI/UX Design</div>
             </div>
             <div className="stat">
@@ -249,7 +190,7 @@ export default function App() {
             </div>
             <div className="stat">
               <div className="stat-num">CLF</div>
-              <div className="stat-label">In Progress; AWS Cloud Practitioner</div>
+              <div className="stat-label">In Progress - AWS Cloud Practitioner</div>
             </div>
           </div>
         </div>
@@ -375,22 +316,19 @@ export default function App() {
         <p className="section-label">Let's connect</p>
         <div className="contact-grid">
           <h2 className="contact-big">LET'S<br/>WORK<br/><span>TOGETHER</span></h2>
-          <div className="contact-right">
-            <div className="contact-links">
-              <a href="mailto:bukolaayodelejimoh@gmail.com" className="clink">
-                <span className="clink-type">Email</span>
-                <span className="clink-val">bukolaayodelejimoh@gmail.com</span>
-              </a>
-              <a href="https://github.com/obooks29" target="_blank" rel="noreferrer" className="clink">
-                <span className="clink-type">GitHub</span>
-                <span className="clink-val">github.com/obooks29</span>
-              </a>
-              <a href="https://linkedin.com/in/bukolayodelejmoh" target="_blank" rel="noreferrer" className="clink">
-                <span className="clink-type">LinkedIn</span>
-                <span className="clink-val">linkedin.com/in/bukolayodelejmoh</span>
-              </a>
-            </div>
-            <ContactForm />
+          <div className="contact-links">
+            <a href="mailto:bukolayodelejmoh@gmail.com" className="clink">
+              <span className="clink-type">Email</span>
+              <span className="clink-val">bukolayodelejmoh@gmail.com</span>
+            </a>
+            <a href="https://github.com/obooks29" target="_blank" rel="noreferrer" className="clink">
+              <span className="clink-type">GitHub</span>
+              <span className="clink-val">github.com/obooks29</span>
+            </a>
+            <a href="https://linkedin.com/in/bukolayodelejmoh" target="_blank" rel="noreferrer" className="clink">
+              <span className="clink-type">LinkedIn</span>
+              <span className="clink-val">linkedin.com/in/bukolayodelejmoh</span>
+            </a>
           </div>
         </div>
       </section>
