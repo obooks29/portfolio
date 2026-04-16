@@ -1,4 +1,4 @@
-# Portfolio — Cloud Engineer
+# Portfolio - Cloud Engineer
 
 A personal portfolio site built with **React + Vite**, deployed on **AWS S3 + CloudFront** with automated CI/CD via **GitHub Actions**.
 
