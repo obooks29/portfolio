@@ -1,35 +1,32 @@
-name: Deploy to AWS
+name: Deploy to Staging
 
 on:
   push:
-    branches: [main]
+    branches: [staging]
 
 jobs:
-  deploy:
+  deploy-staging:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-
       - name: Install dependencies
         run: npm ci
-
       - name: Fix vite permissions
         run: chmod +x node_modules/.bin/vite
-
       - name: Build
         run: npm run build
-
-      - name: Deploy to S3
-        run: aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} --delete
+      - name: Deploy to Staging S3
+        run: |
+          echo "Deploying to STAGING environment..."
+          aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }}/staging --delete
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
-
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} --paths "/*"
         env:
