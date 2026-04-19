@@ -14,9 +14,9 @@ const SKILLS_CLOUD = [
   { name: 'AWS CloudFront (CDN)', level: 'Deployed' },
   { name: 'AWS Lambda (Serverless Compute)', level: 'Deployed' },
   { name: 'AWS IAM (Identity & Access Management)', level: 'Deployed' },
-  { name: 'Terraform (Infrastructure as Code)', level: 'Learning' },
-  { name: 'Docker + AWS ECS Fargate (Containers)', level: 'Learning' },
-  { name: 'CI/CD Pipelines (GitHub Actions)', level: 'Learning' },
+  { name: 'Terraform (Infrastructure as Code)', level: 'Deployed' },
+  { name: 'Docker + AWS ECS Fargate (Containers)', level: 'Deployed' },
+  { name: 'CI/CD Pipelines (GitHub Actions)', level: 'Deployed' },
 ]
 
 const LEVEL_STYLE = {
@@ -41,15 +41,15 @@ const PROJECTS = [
     desc: 'Event-driven backend built with API Gateway → Lambda → SES. No servers, no idle cost. Scales to zero automatically. Full CORS handling and input validation.',
     outcome: 'Free tier · ~0ms cold start · 0 servers managed',
     tags: ['AWS Lambda', 'API Gateway', 'AWS SES', 'AWS IAM'],
-    github: '#',
+    github: 'https://github.com/obooks29/portfolio',
   },
   {
     num: '03',
     title: 'Infrastructure as Code',
-    desc: 'Entire AWS stack reproduced in Terraform. S3 remote state with DynamoDB locking. One command provisions or destroys all resources, no console clicking required.',
+    desc: 'Entire AWS stack reproduced in Terraform. S3 remote state with DynamoDB locking. One command provisions or destroys all resources — no console clicking required.',
     outcome: 'Full stack in < 3 min · Peer-reviewable infra · Reproducible',
     tags: ['Terraform', 'AWS S3 Backend', 'IaC', 'DynamoDB'],
-    github: '#',
+    github: 'https://github.com/obooks29/terraform-portfolio',
   },
   {
     num: '04',
@@ -57,23 +57,23 @@ const PROJECTS = [
     desc: 'CloudWatch dashboard tracking CPU, memory, errors on EC2. SNS alarm fires within 90 seconds of threshold breach. Custom CloudWatch Agent for memory metrics.',
     outcome: 'Alert in 90s · Custom metrics · Full lifecycle visibility',
     tags: ['AWS CloudWatch', 'AWS SNS', 'AWS EC2', 'Alarms'],
-    github: '#',
+    github: 'https://github.com/obooks29/portfolio',
   },
   {
     num: '05',
     title: 'Containerised ECS Deploy',
-    desc: 'Multi-stage Docker build reduces image from 1.2GB → 45MB. Pushed to ECR, deployed on Fargate, no EC2 instances to manage. ALB distributes traffic across 2 tasks.',
-    outcome: '45MB image · 2-task HA · 0 EC2 instances managed',
-    tags: ['Docker', 'AWS ECR', 'AWS ECS Fargate', 'ALB'],
-    github: '#',
+    desc: 'Multi-stage Docker build reduces image from 1.2GB → 26.89MB. Pushed to ECR, deployed on Fargate — no EC2 instances to manage. Portfolio served live from running container.',
+    outcome: '26.89MB image · Fargate task running · 0 EC2 instances managed',
+    tags: ['Docker', 'AWS ECR', 'AWS ECS Fargate', 'Nginx'],
+    github: 'https://github.com/obooks29/portfolio',
   },
   {
     num: '06',
     title: 'Multi-Environment Pipeline',
-    desc: 'Dev → Staging → Prod with Terraform workspaces and isolated S3 state per environment. Manual approval gate on production. Branch protection with required status checks.',
-    outcome: '3 isolated envs · Prod requires approval · 0 manual deploys',
-    tags: ['GitHub Actions', 'Terraform', 'AWS S3', 'CI/CD'],
-    github: '#',
+    desc: 'Dev → Staging → Production with isolated GitHub Actions workflows per environment. Manual approval gate on production. Branch protection with required status checks.',
+    outcome: '3 isolated envs · Prod requires approval · Pipeline runs in 19s',
+    tags: ['GitHub Actions', 'AWS S3', 'CloudFront', 'CI/CD'],
+    github: 'https://github.com/obooks29/portfolio',
   },
 ]
 
@@ -130,7 +130,7 @@ export default function App() {
         <div className="hero-content">
           <div className="status-strip">
             <span className="status-dot-anim" />
-            AWS Cloud Practitioner (CLF-C02): In Progress · Target: June 2026
+            AWS Cloud Practitioner (CLF-C02) — In Progress · Target: June 2026
           </div>
           <p className="hero-eyebrow">Cloud &amp; DevOps Engineer · UI/UX Background</p>
           <h1 className="hero-name">
@@ -138,7 +138,7 @@ export default function App() {
             <span className="accent">JIMOH</span>
           </h1>
           <p className="hero-tagline">
-            I architect secure, automated AWS infrastructure, and bring a designer's eye to every system I build.
+            I architect secure, automated AWS infrastructure — and bring a designer's eye to every system I build.
             Specialising in scalable cloud deployments, CI/CD pipelines, and Infrastructure as Code.
           </p>
           <div className="hero-cta-row">
@@ -161,7 +161,7 @@ export default function App() {
           <div className="about-text">
             <p>
               I'm a <strong>Cloud and DevOps Engineer</strong> who started out in UI/UX design.
-              My design background isn't a detour, it's one of my biggest advantages as an engineer.
+              My design background isn't a detour — it's one of my biggest advantages as an engineer.
               It means I understand how systems are built from the infrastructure up, and how they're
               actually experienced from the interface down.
             </p>
@@ -171,7 +171,7 @@ export default function App() {
               I bring a unique focus on clarity and developer experience to every project.
             </p>
             <p>
-              I'm not just interested in making sure a system works, I'm interested in making sure
+              I'm not just interested in making sure a system works — I'm interested in making sure
               it's <strong>secure, scalable, and easy for other humans to use</strong>.
             </p>
             <div className="badge">
@@ -181,7 +181,7 @@ export default function App() {
           </div>
           <div className="stats">
             <div className="stat">
-              <div className="stat-num">4+</div>
+              <div className="stat-num">3+</div>
               <div className="stat-label">Years in UI/UX Design</div>
             </div>
             <div className="stat">
@@ -190,7 +190,7 @@ export default function App() {
             </div>
             <div className="stat">
               <div className="stat-num">CLF</div>
-              <div className="stat-label">In Progress - AWS Cloud Practitioner</div>
+              <div className="stat-label">In Progress — AWS Cloud Practitioner</div>
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function App() {
         <div className="arch-callout">
           <p className="section-label" style={{marginBottom: '0.5rem'}}>System Architecture &amp; Design Decisions</p>
           <p className="arch-intro">
-            Cloud engineers don't just build, they choose <em>why</em> one approach beats another.
+            Cloud engineers don't just build — they choose <em>why</em> one approach beats another.
             Below is the architecture behind this portfolio site, and the reasoning that drove each decision.
             This is the kind of thinking I bring to every project.
           </p>
@@ -231,7 +231,7 @@ export default function App() {
           <div className="arch-decisions">
             <div className="arch-decision">
               <span className="arch-decision-label">Why S3 over a web server?</span>
-              <span className="arch-decision-val">S3 is serverless, no server to patch, reboot, or pay for when idle. Hosting cost drops from ~$20/mo (EC2) to ~$0.50/mo.</span>
+              <span className="arch-decision-val">S3 is serverless — no server to patch, reboot, or pay for when idle. Hosting cost drops from ~$20/mo (EC2) to ~$0.50/mo.</span>
             </div>
             <div className="arch-decision">
               <span className="arch-decision-label">Why CloudFront?</span>
@@ -239,7 +239,7 @@ export default function App() {
             </div>
             <div className="arch-decision">
               <span className="arch-decision-label">Why Origin Access Control?</span>
-              <span className="arch-decision-val">OAC means the S3 bucket is completely private, only CloudFront can read it. Even if someone finds the bucket URL, they get Access Denied.</span>
+              <span className="arch-decision-val">OAC means the S3 bucket is completely private — only CloudFront can read it. Even if someone finds the bucket URL, they get Access Denied.</span>
             </div>
           </div>
         </div>
@@ -325,9 +325,9 @@ export default function App() {
               <span className="clink-type">GitHub</span>
               <span className="clink-val">github.com/obooks29</span>
             </a>
-            <a href="https://linkedin.com/in/bukolayodelejmoh" target="_blank" rel="noreferrer" className="clink">
+            <a href="https://linkedin.com/in/bukolajimoh" target="_blank" rel="noreferrer" className="clink">
               <span className="clink-type">LinkedIn</span>
-              <span className="clink-val">linkedin.com/in/bukolayodelejmoh</span>
+              <span className="clink-val">linkedin.com/in/bukolajimoh</span>
             </a>
           </div>
         </div>
