@@ -20,17 +20,24 @@ const SKILLS_CLOUD = [
 ]
 
 const LEVEL_STYLE = {
-  'Deployed':    { bg: '#0F2A1A', color: '#4ADE80', border: '#166534' },
-  'Production':  { bg: '#0F2A1A', color: '#4ADE80', border: '#166534' },
-  'Building':    { bg: '#1C1A0F', color: '#FACC15', border: '#854D0E' },
-  'Learning':    { bg: '#1A1A2E', color: '#818CF8', border: '#3730A3' },
+  'Deployed':   { bg: '#0F2A1A', color: '#4ADE80', border: '#166534' },
+  'Production': { bg: '#0F2A1A', color: '#4ADE80', border: '#166534' },
+  'Building':   { bg: '#1C1A0F', color: '#FACC15', border: '#854D0E' },
+  'Learning':   { bg: '#1A1A2E', color: '#818CF8', border: '#3730A3' },
+}
+
+const LEVEL_STYLE_LIGHT = {
+  'Deployed':   { bg: '#DCFCE7', color: '#166534', border: '#86EFAC' },
+  'Production': { bg: '#DCFCE7', color: '#166534', border: '#86EFAC' },
+  'Building':   { bg: '#FEF9C3', color: '#854D0E', border: '#FDE047' },
+  'Learning':   { bg: '#EEF2FF', color: '#3730A3', border: '#A5B4FC' },
 }
 
 const PROJECTS = [
   {
     num: '01',
     title: 'Automated Global Web Hosting',
-    desc: 'Deployed a high-availability portfolio on AWS S3 + CloudFront with Origin Access Control (OAC) enforcing zero-public-access security. HTTPS-only traffic enforced globally.',
+    desc: 'Portfolio deployed to AWS S3 and CloudFront with Origin Access Control enforcing zero-public-access security. HTTPS-only traffic enforced globally.',
     outcome: '< 200ms global latency · $0.50/mo · Zero public S3 access',
     tags: ['AWS S3', 'CloudFront', 'OAC', 'GitHub Actions'],
     github: 'https://github.com/obooks29/portfolio',
@@ -38,8 +45,8 @@ const PROJECTS = [
   {
     num: '02',
     title: 'Serverless Contact API',
-    desc: 'Event-driven backend built with API Gateway → Lambda → SES. No servers, no idle cost. Scales to zero automatically. Full CORS handling and input validation.',
-    outcome: 'Free tier · ~0ms cold start · 0 servers managed',
+    desc: 'Event-driven backend: API Gateway triggers Lambda which calls SES. No servers, no idle cost. Scales to zero automatically. Full CORS handling and input validation.',
+    outcome: 'Free tier · Sub-200ms response · 0 servers managed',
     tags: ['AWS Lambda', 'API Gateway', 'AWS SES', 'AWS IAM'],
     github: 'https://github.com/obooks29/portfolio',
   },
@@ -62,7 +69,7 @@ const PROJECTS = [
   {
     num: '05',
     title: 'Containerised ECS Deploy',
-    desc: 'Multi-stage Docker build reduces image from 1.2GB → 26.89MB. Pushed to ECR, deployed on Fargate, no EC2 instances to manage. Portfolio served live from running container.',
+    desc: 'Multi-stage Docker build reduces image from 1.2GB to 26.89MB. Pushed to ECR, deployed on Fargate with no EC2 instances to manage. Portfolio served live from the running container.',
     outcome: '26.89MB image · Fargate task running · 0 EC2 instances managed',
     tags: ['Docker', 'AWS ECR', 'AWS ECS Fargate', 'Nginx'],
     github: 'https://github.com/obooks29/portfolio',
@@ -70,7 +77,7 @@ const PROJECTS = [
   {
     num: '06',
     title: 'Multi-Environment Pipeline',
-    desc: 'Dev → Staging → Production with isolated GitHub Actions workflows per environment. Manual approval gate on production. Branch protection with required status checks.',
+    desc: 'Dev, Staging, and Production with isolated GitHub Actions workflows per environment. Manual approval gate on production. Branch protection with required status checks.',
     outcome: '3 isolated envs · Prod requires approval · Pipeline runs in 19s',
     tags: ['GitHub Actions', 'AWS S3', 'CloudFront', 'CI/CD'],
     github: 'https://github.com/obooks29/portfolio',
@@ -79,6 +86,11 @@ const PROJECTS = [
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light')
+  }, [darkMode])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -98,6 +110,8 @@ export default function App() {
     return () => observer.disconnect()
   }, [])
 
+  const levelStyle = darkMode ? LEVEL_STYLE : LEVEL_STYLE_LIGHT
+
   return (
     <>
       {/* NAV */}
@@ -108,11 +122,37 @@ export default function App() {
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Work</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="/cv.pdf" target="_blank" rel="noreferrer" style={{color:'var(--orange)',opacity:1}}>CV ↓</a></li>
+          <li><a href="/cv.pdf" target="_blank" rel="noreferrer" className="nav-cv">CV ↓</a></li>
         </ul>
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-          <span className="bar" /><span className="bar" /><span className="bar" />
-        </button>
+        <div className="nav-right">
+          <button
+            className="theme-toggle"
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle light/dark mode"
+            title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {darkMode ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            )}
+          </button>
+          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+            <span className="bar" /><span className="bar" /><span className="bar" />
+          </button>
+        </div>
       </nav>
 
       {menuOpen && (
@@ -130,7 +170,7 @@ export default function App() {
         <div className="hero-content">
           <div className="status-strip">
             <span className="status-dot-anim" />
-            AWS Cloud Practitioner (CLF-C02), In Progress · Target: June 2026
+            AWS Cloud Practitioner (CLF-C02): In Progress · Target: June 2026
           </div>
           <p className="hero-eyebrow">Cloud &amp; DevOps Engineer · UI/UX Background</p>
           <h1 className="hero-name">
@@ -138,7 +178,7 @@ export default function App() {
             <span className="accent">JIMOH</span>
           </h1>
           <p className="hero-tagline">
-            I architect secure, automated AWS infrastructure, and bring a designer's eye to every system I build.
+            I architect secure, automated AWS infrastructure and bring a designer's eye to every system I build.
             Specialising in scalable cloud deployments, CI/CD pipelines, and Infrastructure as Code.
           </p>
           <div className="hero-cta-row">
@@ -160,8 +200,8 @@ export default function App() {
         <div className="about-grid">
           <div className="about-text">
             <p>
-              I'm a <strong>Cloud and DevOps Engineer</strong> who started out in <strong>UI/UX design</strong>.
-              My design background isn't a detour, it is one of my biggest advantages as an engineer.
+              I'm a <strong>Cloud and DevOps Engineer</strong> who started out in UI/UX design.
+              My design background is not a detour. It's one of my biggest advantages as an engineer.
               It means I understand how systems are built from the infrastructure up, and how they're
               actually experienced from the interface down.
             </p>
@@ -171,17 +211,17 @@ export default function App() {
               I bring a unique focus on clarity and developer experience to every project.
             </p>
             <p>
-              I'm not just interested in making sure a system works, I'm interested in making sure
+              I'm not just interested in making sure a system works. I want to make sure
               it's <strong>secure, scalable, and easy for other humans to use</strong>.
             </p>
             <div className="badge">
               <span className="dot" />
-              Open to Cloud / DevOps · Junior–Mid level roles
+              Open to Cloud / DevOps · Junior to Mid level roles
             </div>
           </div>
           <div className="stats">
             <div className="stat">
-              <div className="stat-num">4+</div>
+              <div className="stat-num">3+</div>
               <div className="stat-label">Years in UI/UX Design</div>
             </div>
             <div className="stat">
@@ -190,17 +230,17 @@ export default function App() {
             </div>
             <div className="stat">
               <div className="stat-num">CLF</div>
-              <div className="stat-label">In Progress; AWS Cloud Practitioner</div>
+              <div className="stat-label">In Progress · AWS Cloud Practitioner</div>
             </div>
           </div>
         </div>
 
-        {/* ARCHITECTURE SECTION */}
+        {/* ARCHITECTURE */}
         <div className="arch-callout">
           <p className="section-label" style={{marginBottom: '0.5rem'}}>System Architecture &amp; Design Decisions</p>
           <p className="arch-intro">
-            Cloud engineers don't just build, they choose <em>why</em> one approach beats another.
-            Below is the architecture behind this portfolio site, and the reasoning that drove each decision.
+            Cloud engineers don't just build. They choose <em>why</em> one approach beats another.
+            Below is the architecture behind this portfolio site and the reasoning behind each decision.
             This is the kind of thinking I bring to every project.
           </p>
           <div className="arch-diagram">
@@ -231,7 +271,7 @@ export default function App() {
           <div className="arch-decisions">
             <div className="arch-decision">
               <span className="arch-decision-label">Why S3 over a web server?</span>
-              <span className="arch-decision-val">S3 is serverless, no server to patch, reboot, or pay for when idle. Hosting cost drops from ~$20/mo (EC2) to ~$0.50/mo.</span>
+              <span className="arch-decision-val">S3 is serverless: no server to patch, reboot, or pay for when idle. Hosting cost drops from ~$20/mo (EC2) to ~$0.50/mo.</span>
             </div>
             <div className="arch-decision">
               <span className="arch-decision-label">Why CloudFront?</span>
@@ -239,7 +279,7 @@ export default function App() {
             </div>
             <div className="arch-decision">
               <span className="arch-decision-label">Why Origin Access Control?</span>
-              <span className="arch-decision-val">OAC means the S3 bucket is completely private, only CloudFront can read it. Even if someone finds the bucket URL, they get Access Denied.</span>
+              <span className="arch-decision-val">OAC keeps the S3 bucket completely private. Only CloudFront can read it. Even if someone finds the bucket URL, they get Access Denied.</span>
             </div>
           </div>
         </div>
@@ -252,34 +292,34 @@ export default function App() {
         <h2 className="section-title">SKILLS &amp;<br/>TOOLS</h2>
         <div className="skills-grid">
           <div className="skill-col">
-            <p className="skill-col-title">— Design</p>
+            <p className="skill-col-title">Design</p>
             {SKILLS_DESIGN.map((s) => (
               <div className="skill-row" key={s.name}>
                 <span className="skill-name">{s.name}</span>
                 <span className="skill-tag" style={{
-                  background: LEVEL_STYLE[s.level].bg,
-                  color: LEVEL_STYLE[s.level].color,
-                  border: `1px solid ${LEVEL_STYLE[s.level].border}`
+                  background: levelStyle[s.level].bg,
+                  color: levelStyle[s.level].color,
+                  border: `1px solid ${levelStyle[s.level].border}`
                 }}>{s.level}</span>
               </div>
             ))}
           </div>
           <div className="skill-col">
-            <p className="skill-col-title">— Cloud / DevOps</p>
+            <p className="skill-col-title">Cloud / DevOps</p>
             {SKILLS_CLOUD.map((s) => (
               <div className="skill-row" key={s.name}>
                 <span className="skill-name">{s.name}</span>
                 <span className="skill-tag" style={{
-                  background: LEVEL_STYLE[s.level].bg,
-                  color: LEVEL_STYLE[s.level].color,
-                  border: `1px solid ${LEVEL_STYLE[s.level].border}`
+                  background: levelStyle[s.level].bg,
+                  color: levelStyle[s.level].color,
+                  border: `1px solid ${levelStyle[s.level].border}`
                 }}>{s.level}</span>
               </div>
             ))}
             <div className="skill-legend">
-              <span style={{color:'#4ADE80'}}>● Deployed</span>
-              <span style={{color:'#FACC15'}}>● Building</span>
-              <span style={{color:'#818CF8'}}>● Learning</span>
+              <span style={{color:'#16a34a'}}>● Deployed</span>
+              <span style={{color:'#ca8a04'}}>● Building</span>
+              <span style={{color:'#6366f1'}}>● Learning</span>
             </div>
           </div>
         </div>
@@ -317,9 +357,9 @@ export default function App() {
         <div className="contact-grid">
           <h2 className="contact-big">LET'S<br/>WORK<br/><span>TOGETHER</span></h2>
           <div className="contact-links">
-            <a href="mailto:bukolayodelejmoh@gmail.com" className="clink">
+            <a href="mailto:bukolaayodelejimoh@gmail.com" className="clink">
               <span className="clink-type">Email</span>
-              <span className="clink-val">bukolayodelejmoh@gmail.com</span>
+              <span className="clink-val">bukolaayodelejimoh@gmail.com</span>
             </a>
             <a href="https://github.com/obooks29" target="_blank" rel="noreferrer" className="clink">
               <span className="clink-type">GitHub</span>

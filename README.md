@@ -17,7 +17,7 @@ A production-grade portfolio site and the first of 6 AWS cloud projects, built, 
 ### Project 2: Serverless Contact Form API
 **Services:** AWS Lambda (Python), API Gateway, SES, IAM  
 **Repo:** https://github.com/obooks29/portfolio  
-**What:** Event-driven pipeline — API Gateway receives POST request, invokes Lambda, Lambda calls SES to deliver email. Least-privilege IAM role. CORS and input validation handled in Lambda.  
+**What:** Event-driven pipeline, API Gateway receives POST request, invokes Lambda, Lambda calls SES to deliver email. Least-privilege IAM role. CORS and input validation handled in Lambda.  
 **Outcome:** Zero servers · scales to zero · free tier
 
 ### Project 3: Infrastructure as Code (Terraform)
