@@ -32,7 +32,7 @@ A production-grade portfolio site and the first of 6 AWS cloud projects, built, 
 **Outcome:** Full observability stack · alarm fired in 90s · EC2 terminated after proof
 
 ### Project 5: Containerised ECS Deployment
-**Services:** Docker, AWS ECR, ECS Fargate, ALB  
+**Services:** Docker, AWS ECR, ECS Fargate, ALB. 
 **What:** Multi-stage Docker build reduced image from 1.2GB to 26.89MB. Image pushed to ECR, deployed on ECS Fargate (no EC2 management), served via public IP. Portfolio loaded live from the container.  
 **Outcome:** 26.89MB image · running Fargate task · 0 servers managed
 
