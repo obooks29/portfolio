@@ -1,4 +1,4 @@
-/* ── NAV ── */
+/*  NAV  */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -35,7 +35,7 @@
 }
 .nav__links a:hover { color: var(--accent); }
 
-/* ── HERO ── */
+/*  HERO  */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -156,7 +156,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── BUTTONS ── */
+/*  BUTTONS  */
 .btn {
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -189,7 +189,7 @@
   color: var(--accent);
 }
 
-/* ── SECTIONS ── */
+/*  SECTIONS  */
 .section {
   padding: 6rem 3rem;
   max-width: 1200px;
@@ -220,10 +220,10 @@
   transform: translateY(0);
 }
 
-/* ── ACCENT ── */
+/*  ACCENT  */
 .accent { color: var(--accent); }
 
-/* ── PROJECTS ── */
+/*  PROJECTS  */
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -313,7 +313,7 @@
   background: var(--surface2);
 }
 
-/* ── SKILLS ── */
+/*  SKILLS  */
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -351,7 +351,7 @@
 }
 .skills__list li:hover { color: var(--text); }
 
-/* ── ABOUT ── */
+/*  ABOUT  */
 .about__inner {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -397,7 +397,7 @@
   text-transform: uppercase;
 }
 
-/* ── CONTACT ── */
+/*  CONTACT  */
 .contact__form-wrap {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -451,7 +451,7 @@
   color: var(--muted);
 }
 
-/* ── FOOTER ── */
+/*  FOOTER  */
 .footer {
   border-top: 1px solid var(--border);
   padding: 2rem 3rem;
@@ -465,7 +465,7 @@
 }
 .footer__stack { font-style: italic; }
 
-/* ── RESPONSIVE ── */
+/*  RESPONSIVE  */
 @media (max-width: 768px) {
   .nav { padding: 1.2rem 1.5rem; }
   .nav__links { gap: 1.5rem; }

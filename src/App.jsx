@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-/* ─── PHASE 1: DATA LAYER ─────────────────────────────────────────────────── */
+/* DATA LAYER  */
 
 const SKILLS_DESIGN = [
   { name: 'Figma / Prototyping', level: 'Production' },
@@ -21,7 +21,7 @@ const SKILLS_CLOUD = [
   { name: 'CI/CD Pipelines (GitHub Actions)', level: 'Deployed' },
 ]
 
-/* ─── PHASE 2: THEME TOKENS ───────────────────────────────────────────────── */
+/* THEME TOKENS  */
 
 const LEVEL_STYLE = {
   Deployed:   { bg: '#0F2A1A', color: '#4ADE80', border: '#166534' },
@@ -44,7 +44,7 @@ const PROVIDER = {
   AWS:   { bg: '#1A0F0A', color: '#FB923C', border: '#9A3412', label: 'AWS' },
 }
 
-/* ─── PHASE 1 CONT: PROJECTS — correct links, correct image size ──────────── */
+/* PROJECTS: correct links, correct image size */
 
 const PROJECTS = [
   {
@@ -130,7 +130,7 @@ const PROJECTS = [
   },
 ]
 
-/* ─── PHASE 2: CONTACT FORM COMPONENT ────────────────────────────────────── */
+/* CONTACT FORM COMPONENT */
 
 const API_URL = 'https://wfpo6fiwy1.execute-api.us-east-1.amazonaws.com/contact'
 
@@ -186,7 +186,7 @@ function ContactForm() {
   )
 }
 
-/* ─── PHASE 2 CONT: MAIN APP ─────────────────────────────────────────────── */
+/* MAIN APP */
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -254,7 +254,7 @@ export default function App() {
         </div>
       )}
 
-      {/* ─── PHASE 3: HERO ──────────────────────────────────────────────────── */}
+      {/* HERO */}
       <section className="hero" id="home">
         <div className="hero-bg-text" aria-hidden="true">BUILD<br/>DEPLOY</div>
         <div className="hero-content">
@@ -280,13 +280,16 @@ export default function App() {
             </a>
           </div>
         </div>
+        <div className="hero-avatar" aria-hidden="true">
+          <img src="/avatar.png" alt="" />
+        </div>
         <div className="scroll-hint" aria-hidden="true">
           <div className="scroll-line"/>
           <span>Scroll</span>
         </div>
       </section>
 
-      {/* ─── PHASE 4: ABOUT ─────────────────────────────────────────────────── */}
+      {/* ABOUT SECTION */}
       <section className="about" id="about">
         <span className="section-num" aria-hidden="true">01</span>
         <p className="section-label">About me</p>
@@ -295,7 +298,7 @@ export default function App() {
           <div className="about-text">
             <p>
               I'm a <strong>Cloud and DevOps Engineer</strong> with a unique foundation
-              in Product Design and UI/UX. My 4 years of design experience affords me a
+              in Product Design and UI/UX. My 4+ years of design experience affords me a
               strategic advantage: I view technical complexity through the lens of systems
               thinking rather than isolated implementation.
             </p>
@@ -395,7 +398,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ─── PHASE 5: SKILLS ────────────────────────────────────────────────── */}
+      {/* SKILLS */}
       <section id="skills">
         <span className="section-num" aria-hidden="true">02</span>
         <p className="section-label">What I bring</p>
@@ -435,7 +438,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ─── PHASE 5: PROJECTS ──────────────────────────────────────────────── */}
+      {/* PROJECTS */}
       <section className="projects" id="projects">
         <span className="section-num" aria-hidden="true">03</span>
         <p className="section-label">Case studies</p>
@@ -477,7 +480,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ─── PHASE 5: CONTACT ───────────────────────────────────────────────── */}
+      {/* CONTACT */}
       <section id="contact">
         <span className="section-num" aria-hidden="true">04</span>
         <p className="section-label">Let's connect</p>
@@ -503,7 +506,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ─── PHASE 5: FOOTER ────────────────────────────────────────────────── */}
+      {/* FOOTER */}
       <footer>
         <p>2026 Bukola Jimoh · <span className="orange">Cloud and DevOps Engineer</span></p>
         <p>Deployed on <span className="orange">AWS</span> · S3 + CloudFront + GitHub Actions</p>
