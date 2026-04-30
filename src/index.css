@@ -78,7 +78,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .scroll-hint span { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-muted); writing-mode: vertical-rl; }
 .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--orange), transparent); }
 .hero-avatar { position: absolute; bottom: 0; right: 6rem; width: clamp(260px, 28vw, 420px); pointer-events: none; user-select: none; opacity: 0; animation: fadeUp 1s 1s forwards; }
-.hero-avatar img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 40px rgba(255,72,32,0.12)); }
+.hero-avatar img { height: 100%; width: auto; display: block; filter: drop-shadow(0 0 40px rgba(255,72,32,0.12)); }
 
 /* SECTIONS */
 section { padding: 7rem 3rem; position: relative; transition: background 0.3s; }
