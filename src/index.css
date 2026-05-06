@@ -210,8 +210,8 @@ section { padding: 7rem 3rem; position: relative; transition: background 0.3s; }
 .stat-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--fg-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.3rem; }
 
 /* ARCH */
-.arch-callout { margin-top: 4rem; border: 1px solid var(--arch-border); background: var(--arch-bg); padding: 2rem; transition: background 0.3s, border-color 0.3s; }
-.arch-intro { font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.75; margin-bottom: 2rem; max-width: 680px; font-weight: 300; }
+.arch-callout { margin-top: 4rem; border: 1px solid var(--arch-border); background: var(--arch-bg); padding: 2rem; transition: background 0.3s, border-color 0.3s; text-align: center; }
+.arch-intro { font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.75; margin-bottom: 2rem; max-width: 680px; font-weight: 300; margin-left: auto; margin-right: auto; }
 .arch-intro em { color: var(--orange); font-style: normal; }
 .arch-diagram { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
 .arch-node { font-family: 'DM Mono', monospace; font-size: 0.72rem; text-align: center; padding: 0.75rem 1.1rem; border: 1px solid; line-height: 1.5; display: flex; flex-direction: column; align-items: center; gap: 2px; }
