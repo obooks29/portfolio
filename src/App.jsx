@@ -336,9 +336,19 @@ export default function App() {
         </div>
 
         <div className="arch-callout">
-          <p className="section-label" style={{marginBottom: '0.5rem'}}>
-            System Architecture and Design Decisions
+          <p className="section-label" style={{marginBottom: '0.5rem', color: 'rgba(255,255,255,0.6)'}}>
+            The thinking behind the build
           </p>
+          <h3 style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+            color: 'white',
+            letterSpacing: '0.04em',
+            marginBottom: '1.2rem',
+            lineHeight: '0.95'
+          }}>
+            BUILT<br/>DIFFERENT
+          </h3>
           <p className="arch-intro">
             Cloud engineering is not just about assembly. It's about the strategic
             decisions that prioritise one path over another. This portfolio is a direct

@@ -17,7 +17,7 @@ Demonstrates a real enterprise pattern for cross-provider compliance data routin
 
 ### 02 - GCP Static Site with Cloud CDN
 React site deployed to Google Cloud Storage with Cloud CDN for global delivery.
-Cloud Build pipeline triggers on every GitHub push and syncs output to the GCS bucket.
+Cloud Build pipeline triggers on every GitHub push and syncs output to the GCS bucket
 **Repo:** https://github.com/obooks29/vela-site
 
 ### 03 - Azure Static Web App with OIDC Authentication
